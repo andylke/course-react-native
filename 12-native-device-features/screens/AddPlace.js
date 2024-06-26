@@ -1,11 +1,14 @@
 import { StyleSheet, View } from "react-native";
 import PlaceForm from "../components/Places/PlaceForm";
+import * as Database from "../util/database";
 
 function AddPlace({ navigation }) {
   function createPlaceHandler(place) {
-    navigation.navigate("AllPlaces", {
-      place: place,
-    });
+    Database.insertPlace(place);
+    navigation.navigate("AllPlaces");
+    // navigation.navigate("AllPlaces", {
+    //   place: place,
+    // });
   }
 
   return <PlaceForm onCreatePlace={createPlaceHandler} />;
